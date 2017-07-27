@@ -1,0 +1,41 @@
+<project basedir="." default="test" name="automation test">
+    <property name="base.dir" value="./"/>
+    <property name="testng.output.dir" value="${base.dir}/test-output"/>
+    <property name="3rd.lib.dir" value="${base.dir}/libs"/>
+    <property name="testng.file" value="testng.xml"/>
+ 
+    <taskdef resource="testngtasks" classpath="${3rd.lib.dir}/testng.jar"/>
+ 
+    <target name="clean">
+        <delete dir="${base.dir}/bin"/>
+    </target>
+    <target name="compile" depends="clean">
+        <mkdir dir="${base.dir}/bin"/>
+        <javac srcdir="${base.dir}/src" destdir="${base.dir}/bin" encoding="UTF-8" classpathref="classes" includeantruntime="off" debug="on" debuglevel="lines,vars,source"/>
+    </target>
+ 
+    <path id="classes">
+        <fileset dir="${3rd.lib.dir}" includes="*jar"/>
+        <fileset dir="${3rd.lib.dir}" includes="*zip"/>
+        <pathelement location="${base.dir}/bin"/>
+    </path>
+	  <!--
+	<target name="run" depends="compile">  
+	
+		<java fork="true" failonerror="true" classname="com.webdriver.test.TestLogin" classpathref="classes">  
+		    <sysproperty key="file.encoding" value="UTF-8" />  
+		   
+		    <arg value="${args[0]}" /> 
+		     
+		</java> 
+	 
+	</target>
+	 -->
+	
+    <target name="test" depends="compile">
+        <testng outputdir="${testng.output.dir}" classpathref="classes"  delegateCommandSystemProperties="true">
+            <xmlfileset dir="${base.dir}" includes="${testng.file}"/>
+        	<jvmarg value="-Dfile.encoding=UTF-8"/>
+        </testng>
+    </target>
+</project>
