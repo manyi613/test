@@ -21,6 +21,9 @@ public class TestLogin {
 	private static String password = "manyi123";
 	private static String URL = "http://testbuyer.zhichubao.com/";
 
+	public static void main(String[] args) {
+		System.out.println("main");
+	}
 	@BeforeTest
 	public void setUp() {
 		System.setProperty("webdriver.chrome.driver", chromedriverPath);
