@@ -9,22 +9,28 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.*;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.*;
 import org.testng.Assert;
 
 public class TestLogin {
 
-	private static ChromeDriver driver;
-//	private static String chromedriverPath = "D:\\tools\\chromedriver.exe";
-	private static String chromedriverPath = "/opt/driver/chromedriver";
+//	private static ChromeDriver driver;
+	private static HtmlUnitDriver driver;
+	private static String chromedriverPath = "D:\\tools\\chromedriver.exe";
+//	private static String chromedriverPath = "/opt/driver/chromedriver";
 
 	private static String username = "1239263709@qq.com";
 	private static String password = "manyi123";
 	private static String URL = "http://testbuyer.zhichubao.com/";
-
 	
 	@BeforeTest
+	public void setUpHtmlUnitDriver() {
+		driver = new HtmlUnitDriver();
+	}
+	
+//	@BeforeTest
 	public void setUp() {
 		System.setProperty("webdriver.chrome.driver", chromedriverPath);
 		ChromeOptions options = new ChromeOptions();
@@ -38,7 +44,7 @@ public class TestLogin {
 		prefs.put("credentials_enable_service", false);
 		prefs.put("profile.password_manager_enabled", false);
 		options.setExperimentalOption("prefs", prefs);
-		driver = new ChromeDriver(options);
+//		driver = new ChromeDriver(options);
 	}
 
 	@Test
@@ -51,11 +57,6 @@ public class TestLogin {
 		homePage.clickLoginButton();
 		System.out.println("执行登录测试。");
 		Assert.assertEquals(driver.getTitle(), "支出宝-为节约而生");
-	}
-
-	@Test
-	public void TestPrintf() throws Exception {
-		System.out.println("打印。");
 	}
 
 	@AfterTest
