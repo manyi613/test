@@ -47,7 +47,7 @@ public class TestLogin {
 //		driver = new ChromeDriver(options);
 	}
 
-//	@Test
+	@Test
 	public void TestLogin() throws Exception {
 
 		driver.get(URL);
@@ -56,6 +56,7 @@ public class TestLogin {
 		homePage.inputPassWord(password);
 		homePage.clickLoginButton();
 		System.out.println("执行登录测试。");
+		System.out.println("网页的标题是：" + driver.getTitle());
 		Assert.assertEquals(driver.getTitle(), "支出宝-为节约而生");
 	}
 
