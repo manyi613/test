@@ -56,7 +56,7 @@ public class TestLogin {
 		homePage.inputPassWord(password);
 		homePage.clickLoginButton();
 		System.out.println("执行登录测试。");
-		Assert.assertEquals(driver.getTitle(), "支出宝-为节约而生");
+		Assert.assertEquals(driver.getTitle(), "支出宝 -为节约而生");
 	}
 
 	@AfterTest
