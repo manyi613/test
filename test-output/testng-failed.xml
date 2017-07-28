@@ -6,8 +6,9 @@
       <class name="com.webdriver.test.TestLogin">
         <methods>
           <include name="tearDown"/>
-          <include name="TestLogin"/>
+          <include name="TestPrintf"/>
           <include name="setUp"/>
+          <include name="TestLogin1"/>
         </methods>
       </class> <!-- com.webdriver.test.TestLogin -->
     </classes>

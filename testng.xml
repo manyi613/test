@@ -5,4 +5,10 @@
       <class name="com.webdriver.test.TestLogin"/>
     </classes>
   </test> <!-- Test -->
+  
+  <test name="Test2">
+    <classes>
+      <class name="com.webdriver.test.NewTest"/>
+    </classes>
+  </test> <!-- Test -->
 </suite> <!-- Suite -->
