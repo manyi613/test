@@ -17,7 +17,7 @@ public class TestLogin {
 
 	private static ChromeDriver driver;
 //	private static String chromedriverPath = "D:\\tools\\chromedriver.exe";
-	private static String chromedriverPath = "/opt/driver/chromedriverforLinux";
+	private static String chromedriverPath = "/opt/driver/chromedriver";
 
 	private static String username = "1239263709@qq.com";
 	private static String password = "manyi123";
