@@ -6,7 +6,7 @@ import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage {
+public class PageLogin {
 
 	WebDriver driver;
 
@@ -34,7 +34,7 @@ public class LoginPage {
 	public void LoginPage(WebDriver driver){
 
 		this.driver = driver;
-		PageFactory.initElements(driver,this);
+//		PageFactory.initElements(driver,this);
 	}
 
 	public void inputUserName(String text){

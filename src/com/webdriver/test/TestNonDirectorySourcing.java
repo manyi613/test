@@ -13,7 +13,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.*;
 import org.testng.Assert;
 
-public class TestLogin {
+public class TestNonDirectorySourcing {
 
 	private static ChromeDriver driver;
 	private static String chromedriverPath = "D:\\tools\\chromedriver.exe";
@@ -41,23 +41,46 @@ public class TestLogin {
 	@Test
 	public static void TestLogin() throws Exception {
 
-		((WebDriver) driver).get(URL);
+		driver.get(URL);
 		PageLogin homePage = PageFactory.initElements(driver, PageLogin.class);
+		
 		homePage.inputUserName(username);
 		homePage.inputPassWord(password);
 		homePage.clickLoginButton();
 		System.out.println("执行登录测试。");
-		Assert.assertEquals(((WebDriver) driver).getTitle(), "支出宝-为节约而生");
+		Assert.assertEquals(driver.getTitle(), "支出宝-为节约而生");
 	}
 
 	@Test
-	public void TestPrintf() throws Exception {
-		System.out.println("打印。");
+	public void TestNewSourcingApply() throws Exception {
+//		driver.get(URL);
+		PageShortcutMenu shortcutMenuPage = PageFactory.initElements(driver, PageShortcutMenu.class);
+		shortcutMenuPage.creatSourcingApple();
+		
+		PageSourcing1 sourcingPage1 = PageFactory.initElements(driver, PageSourcing1.class);
+		sourcingPage1.SourcingPage(driver);
+		
+		sourcingPage1.inputApplyName(BaseTools.getDate());
+		sourcingPage1.inputExpectedDeliveryTime();
+		sourcingPage1.clickNextButton();
+		
+		PageSourcing2 sourcingPage2 = PageFactory.initElements(driver, PageSourcing2.class);
+		sourcingPage2.SourcingPage(driver);
+		sourcingPage2.clickCreatDetailButton();
+		sourcingPage2.inputGoodName("GoodName");
+		sourcingPage2.inputGoodCode("GoodCode");
+		sourcingPage2.selectCategory();
+//		sourcingPage2.selectCostCenter();
+//		sourcingPage2.selectfinanceAccount();
+//		sourcingPage2.selectSupplier();
+//		sourcingPage2.inputGoodPrice("200");
+//		sourcingPage2.inputGoodQuantity("100");
+		sourcingPage2.clickSaveButton();
 	}
 
 	@AfterTest
 	public void tearDown() {
-		driver.quit();
+//		driver.quit();
 	}
 
 }
