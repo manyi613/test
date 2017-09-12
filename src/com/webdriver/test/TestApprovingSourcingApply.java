@@ -13,14 +13,14 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.*;
 import org.testng.Assert;
 
-public class TestNonDirectorySourcing {
+public class TestApprovingSourcingApply {
 
 	private static ChromeDriver driver;
 	private static String chromedriverPath = "D:\\tools\\chromedriver.exe";
 	private static String username = "1239263709@qq.com";
 	private static String password = "manyi123";
 	private static String URL = "http://testbuyer.zhichubao.com/";
-	private static String ApplyCode = null;
+	private static String ApplyCode = "PR2017091210361800";
 	@BeforeTest
 	public void setUp() {
 		System.setProperty("webdriver.chrome.driver", chromedriverPath);
@@ -38,7 +38,7 @@ public class TestNonDirectorySourcing {
 		driver = new ChromeDriver(options);
 	}
 
-	@Test
+	@Test(priority = 0)
 	public static void TestLogin() throws Exception {
 
 		driver.get(URL);
@@ -51,40 +51,18 @@ public class TestNonDirectorySourcing {
 		Assert.assertEquals(driver.getTitle(), "支出宝-为节约而生");
 	}
 
-	@Test
-	public void TestNewSourcingApply() throws Exception {
+	@Test(priority = 1)
+	public void TestApprovingSourcingApply() throws Exception {
 //		driver.get(URL);
 		PageShortcutMenu shortcutMenuPage = PageFactory.initElements(driver, PageShortcutMenu.class);
-		shortcutMenuPage.creatSourcingApple();
+		shortcutMenuPage.ShortcutMenuPage(driver);
+		shortcutMenuPage.approvingSourcing();
 		
-		PageSourcing1 sourcingPage1 = PageFactory.initElements(driver, PageSourcing1.class);
-		sourcingPage1.SourcingPage(driver);
+		PageApprovingSourcing approvingSourcing = PageFactory.initElements(driver, PageApprovingSourcing.class);
+		approvingSourcing.PageApprovingSourcing(driver);
 		
-		sourcingPage1.inputApplyName(BaseTools.getDate());
-		sourcingPage1.inputExpectedDeliveryTime();
-		sourcingPage1.clickNextButton();
-		
-		PageSourcing2 sourcingPage2 = PageFactory.initElements(driver, PageSourcing2.class);
-		sourcingPage2.SourcingPage(driver);
-		sourcingPage2.clickCreatDetailButton();
-		sourcingPage2.inputGoodName("GoodName");
-		sourcingPage2.inputGoodCode("GoodCode");
-//		sourcingPage2.selectCostCenter();
-		sourcingPage2.selectfinanceAccount();
-		sourcingPage2.selectSupplier();
-		sourcingPage2.inputGoodPrice("200");
-		sourcingPage2.inputGoodQuantity("100");
-		sourcingPage2.inputRemark("Remark");
-		sourcingPage2.selectCategory1();
-		sourcingPage2.selectCategory2();
-		sourcingPage2.clickSaveButton();
-		sourcingPage2.clickNextButton();
-		
-		PageSourcing3 sourcingPage3 = PageFactory.initElements(driver, PageSourcing3.class);
-		sourcingPage3.SourcingPage(driver);
-		sourcingPage3.clickCommitButton();
-		ApplyCode = sourcingPage3.getApplyCode();
-		System.out.println("ApplyCode:"+ApplyCode);
+		approvingSourcing.searchApply(ApplyCode);
+		approvingSourcing.clickApprovedButton();
 	}
 
 	@AfterTest
