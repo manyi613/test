@@ -1,4 +1,4 @@
-package com.webdriver.test;
+package travel;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,17 +11,25 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.*;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.*;
+
+import login.PageLogin;
+import utils.PageShortcutMenu;
+
 import org.testng.Assert;
 
-public class TestLogin {
+
+/*
+ * 测试审批采购申请
+ * 
+ */
+public class TestTravelApply {
 
 	private static ChromeDriver driver;
-//	private static String chromedriverPath = "D:\\tools\\chromedriver.exe";
-	private static String chromedriverPath = "E:\\work\\chromedriver.exe";
+	private static String chromedriverPath = "D:\\tools\\chromedriver.exe";
 	private static String username = "1239263709@qq.com";
 	private static String password = "manyi123";
 	private static String URL = "http://testbuyer.zhichubao.com/";
-
+	static String applyCode = null;
 	@BeforeTest
 	public void setUp() {
 		System.setProperty("webdriver.chrome.driver", chromedriverPath);
@@ -39,21 +47,28 @@ public class TestLogin {
 		driver = new ChromeDriver(options);
 	}
 
-	@Test
+	@Test(priority = 0)
 	public static void TestLogin() throws Exception {
 
-		((WebDriver) driver).get(URL);
+		driver.get(URL);
 		PageLogin homePage = PageFactory.initElements(driver, PageLogin.class);
+		
 		homePage.inputUserName(username);
 		homePage.inputPassWord(password);
 		homePage.clickLoginButton();
 		System.out.println("执行登录测试。");
-		Assert.assertEquals(((WebDriver) driver).getTitle(), "支出宝-为节约而生");
+		Assert.assertEquals(driver.getTitle(), "支出宝-为节约而生");
 	}
 
-	@Test
-	public void TestPrintf() throws Exception {
-		System.out.println("打印。");
+	@Test(priority = 1)
+	public void TestTravelApply() throws Exception {
+		
+		PageTravelApply travelApply = PageFactory.initElements(driver, PageTravelApply.class);
+		travelApply.PageTravelApply(driver);
+		
+		travelApply.clickTraveMenu();
+		travelApply.createTravelApply();
+		System.out.println("差旅申请" + applyCode + "申请通过。");
 	}
 
 	@AfterTest

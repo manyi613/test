@@ -1,4 +1,4 @@
-package com.webdriver.test;
+package utils;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

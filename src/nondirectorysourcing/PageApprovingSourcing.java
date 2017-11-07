@@ -1,4 +1,4 @@
-package com.webdriver.test;
+package nondirectorysourcing;
 
 import java.util.concurrent.TimeUnit;
 
@@ -8,6 +8,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+
+
+/*
+ * 待审批页面批准采购申请
+ * 
+ * 
+ */
+
 
 public class PageApprovingSourcing {
 
@@ -23,7 +32,7 @@ public class PageApprovingSourcing {
 	WebElement searchBtnEle;
 	
 	//批准按钮
-	@FindBy(xpath = "//*[@id=\"checkbox\"]/div[1]/div[2]/table/tbody/tr/td[9]/button")
+	@FindBy(xpath = "//*[@id=\"data\"]/div/div[2]/table/tbody/tr/td[9]/button[2]")
 	@CacheLookup
 	WebElement approvedBtnEle;
 	
@@ -32,17 +41,22 @@ public class PageApprovingSourcing {
 	@CacheLookup
 	WebElement rejectedBtnEle;
 	
+	//点击批准按钮后弹框的“确定”
 	String apply = "//*[@class='layui-layer layui-layer-dialog  layer-anim']/div[3]/a[1]";
 	
 	public void PageApprovingSourcing(WebDriver driver){
 
 		this.driver = driver;
 //		PageFactory.initElements(driver,this);
+		driver.findElement(By.id("")).click();
 	}
 
 	public void searchApply(String text){
-		searchKeyEle.sendKeys(text);
-		searchBtnEle.click();
+		if(!text.equals(null)) {
+			searchKeyEle.sendKeys(text);
+			searchBtnEle.click();
+		}
+		
 	}
 	
 	

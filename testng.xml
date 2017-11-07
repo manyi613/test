@@ -1,9 +1,12 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Suite" parallel="false">
-  <test name="Test">
+  <test name="Test" preserve-order="true">
     <classes>
-      <class name="com.webdriver.test.TestLogin"/>
-      <class name="com.webdriver.test.NewTest"/>
+<!--       <class name="com.webdriver.test.TestLogin"/> -->
+<!--       <class name="com.webdriver.test.NewTest"/> -->
+      
+      <class name="nondirectorysourcing.TestCreateNonDirectorySourcing"/>
+      <class name="nondirectorysourcing.TestApprovingSourcingApply"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

@@ -3,14 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
   <test name="Test(failed)">
     <classes>
-      <class name="com.webdriver.test.TestLogin">
+      <class name="sourcing.TestApprovingSourcingApply">
         <methods>
-          <include name="tearDown"/>
-          <include name="TestPrintf"/>
           <include name="setUp"/>
-          <include name="TestLogin1"/>
+          <include name="TestApprovingSourcingApply"/>
+          <include name="tearDown"/>
         </methods>
-      </class> <!-- com.webdriver.test.TestLogin -->
+      </class> <!-- sourcing.TestApprovingSourcingApply -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

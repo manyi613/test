@@ -1,4 +1,4 @@
-package com.webdriver.test;
+package other;
 
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;

@@ -1,4 +1,4 @@
-package com.webdriver.test;
+package nondirectorysourcing;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,16 +11,26 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.*;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.*;
+
+import login.PageLogin;
+import utils.BaseTools;
+import utils.PageShortcutMenu;
+
 import org.testng.Assert;
 
-public class TestApprovingSourcingApply {
+
+/*
+ * 新建非目录采购申请
+ * 
+ */
+public class TestCreateNonDirectorySourcing {
 
 	private static ChromeDriver driver;
 	private static String chromedriverPath = "D:\\tools\\chromedriver.exe";
 	private static String username = "1239263709@qq.com";
 	private static String password = "manyi123";
 	private static String URL = "http://testbuyer.zhichubao.com/";
-	private static String ApplyCode = "PR2017091210361800";
+	static String ApplyCode = null;
 	@BeforeTest
 	public void setUp() {
 		System.setProperty("webdriver.chrome.driver", chromedriverPath);
@@ -38,7 +48,7 @@ public class TestApprovingSourcingApply {
 		driver = new ChromeDriver(options);
 	}
 
-	@Test(priority = 0)
+	@Test
 	public static void TestLogin() throws Exception {
 
 		driver.get(URL);
@@ -51,18 +61,41 @@ public class TestApprovingSourcingApply {
 		Assert.assertEquals(driver.getTitle(), "支出宝-为节约而生");
 	}
 
-	@Test(priority = 1)
-	public void TestApprovingSourcingApply() throws Exception {
+	@Test
+	public void TestNewSourcingApply() throws Exception {
 //		driver.get(URL);
 		PageShortcutMenu shortcutMenuPage = PageFactory.initElements(driver, PageShortcutMenu.class);
-		shortcutMenuPage.ShortcutMenuPage(driver);
-		shortcutMenuPage.approvingSourcing();
+		shortcutMenuPage.creatSourcingApple();
 		
-		PageApprovingSourcing approvingSourcing = PageFactory.initElements(driver, PageApprovingSourcing.class);
-		approvingSourcing.PageApprovingSourcing(driver);
+		PageSourcing1 sourcingPage1 = PageFactory.initElements(driver, PageSourcing1.class);
+		sourcingPage1.SourcingPage(driver);
 		
-		approvingSourcing.searchApply(ApplyCode);
-		approvingSourcing.clickApprovedButton();
+		sourcingPage1.inputApplyName(BaseTools.getDate());
+		sourcingPage1.inputExpectedDeliveryTime();
+		sourcingPage1.clickNextButton();
+		
+		PageSourcing2 sourcingPage2 = PageFactory.initElements(driver, PageSourcing2.class);
+		sourcingPage2.SourcingPage(driver);
+		sourcingPage2.clickCreatDetailButton();
+		sourcingPage2.inputGoodName("GoodName");
+		sourcingPage2.inputGoodCode("GoodCode");
+//		sourcingPage2.selectCostCenter();
+		sourcingPage2.selectfinanceAccount();
+		sourcingPage2.selectSupplier();
+		sourcingPage2.inputGoodPrice("200");
+		sourcingPage2.inputGoodQuantity("100");
+		sourcingPage2.inputRemark("Remark");
+		sourcingPage2.selectCategory1();
+		sourcingPage2.selectCategory2();
+		sourcingPage2.clickSaveButton();
+		sourcingPage2.clickNextButton();
+		
+		PageSourcing3 sourcingPage3 = PageFactory.initElements(driver, PageSourcing3.class);
+		sourcingPage3.SourcingPage(driver);
+		sourcingPage3.clickCommitButton();
+		ApplyCode = sourcingPage3.getApplyCode();
+		System.out.println("ApplyCode:"+ApplyCode);
+		System.out.println("采购申请" + ApplyCode + "提交成功。");
 	}
 
 	@AfterTest
