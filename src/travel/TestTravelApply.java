@@ -13,6 +13,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.*;
 
 import login.PageLogin;
+import nondirectorysourcing.PageSourcing2;
+import utils.BaseTools;
 import utils.PageShortcutMenu;
 
 import org.testng.Assert;
@@ -63,17 +65,37 @@ public class TestTravelApply {
 	@Test(priority = 1)
 	public void TestTravelApply() throws Exception {
 		
-		PageTravelApply travelApply = PageFactory.initElements(driver, PageTravelApply.class);
-		travelApply.PageTravelApply(driver);
+		PageTravelApply1 travelApply1 = PageFactory.initElements(driver, PageTravelApply1.class);
+		travelApply1.PageTravelApply1(driver);
 		
-		travelApply.clickTraveMenu();
-		travelApply.createTravelApply();
+		
+		
+		travelApply1.clickTraveMenu();
+		travelApply1.createTravelApply();
+		travelApply1.inputApplyName(BaseTools.getDate());
+		
+		travelApply1.clickAddRouteButton();
+		
+		PageTravelApply2 travelApply2 = PageFactory.initElements(driver, PageTravelApply2.class);
+		travelApply2.PageTravelApply2(driver);
+		
+		travelApply2.selectTravelType("火车");
+		travelApply2.inputTime();
+		
+		travelApply2.selectTravelFromCity();
+		travelApply2.selectTravelToCity();
+		
+		travelApply2.clickRouteOKButton();
+		travelApply1.clickNextButton();
+		
+		travelApply1.clickSureButton();
+		travelApply1.submitApply();
 		System.out.println("差旅申请" + applyCode + "申请通过。");
 	}
 
 	@AfterTest
 	public void tearDown() {
-		driver.quit();
+//		driver.quit();
 	}
 
 }

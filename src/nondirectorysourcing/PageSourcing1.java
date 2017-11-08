@@ -45,7 +45,7 @@ public class PageSourcing1 {
 	}
 
 	public void inputApplyName(String text){
-		applyNameEle.sendKeys(text);
+		applyNameEle.sendKeys("采购申请" + text);
 	}
 	
 	public void inputExpectedDeliveryTime(){

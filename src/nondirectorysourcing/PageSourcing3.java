@@ -9,6 +9,8 @@ import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import utils.BaseTools;
+
 public class PageSourcing3 {
 
 	WebDriver driver;
@@ -21,8 +23,7 @@ public class PageSourcing3 {
 	@CacheLookup
 	WebElement commitEle;
 	
-	String applyCodeXPATH = "//*[@id=\"loginform\"]/div[3]/div/div[2]/div/div/div/div/div/h5/a/strong";
-	
+
 	public void SourcingPage(WebDriver driver) {
 
 		this.driver = driver;
@@ -35,7 +36,7 @@ public class PageSourcing3 {
 	
 	public String getApplyCode() {
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		WebElement ac = driver.findElement(By.xpath(applyCodeXPATH));
+		WebElement ac = driver.findElement(By.xpath(BaseTools.applyCodeXPATH));
 		return ac.getText();
 	}
 }
