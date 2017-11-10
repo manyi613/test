@@ -1,4 +1,4 @@
-package nondirectorysourcing;
+package utils;
 
 import java.util.concurrent.TimeUnit;
 
@@ -21,6 +21,7 @@ import org.openqa.selenium.support.PageFactory;
 public class PageApprovingSourcing {
 
 	WebDriver driver;
+	String flag = null;
 	//搜索框
 	@FindBy(name = "searchKey")
 	@CacheLookup
@@ -31,12 +32,12 @@ public class PageApprovingSourcing {
 	@CacheLookup
 	WebElement searchBtnEle;
 	
-	//批准按钮
+	//采购申请批准按钮
 	@FindBy(xpath = "//*[@id=\"data\"]/div/div[2]/table/tbody/tr/td[9]/button[2]")
 	@CacheLookup
 	WebElement approvedBtnEle;
 
-	//拒绝按钮
+	//采购申请拒绝按钮
 	@FindBy(xpath = "//*[@id=\"checkbox\"]/div[1]/div[2]/table/tbody/tr/td[9]/button[2]")
 	@CacheLookup
 	WebElement rejectedBtnEle;
@@ -52,6 +53,19 @@ public class PageApprovingSourcing {
 
 	public void searchApply(String text) throws InterruptedException{
 		if(!text.equals(null)) {
+			if(text.startsWith("PR")) {
+				flag = "采购";
+			}
+			else if(text.startsWith("TR")) {
+				flag = "差旅";
+			}
+			else if(text.startsWith("VM")) {
+				flag = "供应商";
+			}
+			else if(text.startsWith("EPAY")) {
+				flag = "付款";
+			}
+			
 			Thread.sleep(2000);
 			searchKeyEle.sendKeys(text);
 			searchBtnEle.click();
@@ -63,7 +77,14 @@ public class PageApprovingSourcing {
 
 	public void clickApprovedButton() throws InterruptedException{
 		Thread.sleep(2000);
-		approvedBtnEle.click();
+		
+		if(flag.equals("采购")) {
+			approvedBtnEle.click();
+		}
+		else if(flag.equals("差旅")) {
+			
+		}
+		
 		Thread.sleep(2000);
 		driver.findElement(By.xpath(apply)).click();
 		Thread.sleep(2000);

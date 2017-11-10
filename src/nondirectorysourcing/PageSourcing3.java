@@ -34,9 +34,5 @@ public class PageSourcing3 {
 		commitEle.click();
 	}
 	
-	public String getApplyCode() {
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		WebElement ac = driver.findElement(By.xpath(BaseTools.applyCodeXPATH));
-		return ac.getText();
-	}
+
 }

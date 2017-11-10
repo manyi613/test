@@ -63,9 +63,9 @@ public class TestApprovingSourcingApply {
 	@Test(priority = 1)
 	public void TestApprovingSourcingApply() throws Exception {
 //		driver.get(URL);
-		PageShortcutMenu shortcutMenuPage = PageFactory.initElements(driver, PageShortcutMenu.class);
-		shortcutMenuPage.ShortcutMenuPage(driver);
-		shortcutMenuPage.approvingSourcing();
+		PageShortcutMenu shortcutMenu = PageFactory.initElements(driver, PageShortcutMenu.class);
+		shortcutMenu.PageShortcutMenu(driver);
+		shortcutMenu.approvingSourcing();
 		
 		PageApprovingSourcing approvingSourcing = PageFactory.initElements(driver, PageApprovingSourcing.class);
 		approvingSourcing.PageApprovingSourcing(driver);

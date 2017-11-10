@@ -16,6 +16,7 @@ import login.PageLogin;
 import nondirectorysourcing.PageSourcing2;
 import utils.BaseTools;
 import utils.PageShortcutMenu;
+import utils.PageSubmitSuccess;
 
 import org.testng.Assert;
 
@@ -31,7 +32,7 @@ public class TestTravelApply {
 	private static String username = "1239263709@qq.com";
 	private static String password = "manyi123";
 	private static String URL = "http://testbuyer.zhichubao.com/";
-	static String applyCode = null;
+	static String ApplyCode = null;
 	@BeforeTest
 	public void setUp() {
 		System.setProperty("webdriver.chrome.driver", chromedriverPath);
@@ -90,7 +91,12 @@ public class TestTravelApply {
 		
 		travelApply1.clickSureButton();
 		travelApply1.submitApply();
-		System.out.println("差旅申请" + applyCode + "申请通过。");
+		
+		PageSubmitSuccess submitSuccess = PageFactory.initElements(driver, PageSubmitSuccess.class);
+		submitSuccess.PageSubmitSuccess(driver);
+		ApplyCode = submitSuccess.getApplyCode();
+		
+		System.out.println("差旅申请" + ApplyCode + "申请通过。");
 	}
 
 	@AfterTest

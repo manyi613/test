@@ -40,7 +40,7 @@ public class PageShortcutMenu {
 	@CacheLookup
 	WebElement nextBtnEle;
 
-	public void ShortcutMenuPage(WebDriver driver) {
+	public void PageShortcutMenu(WebDriver driver) {
 
 		this.driver = driver;
 		// PageFactory.initElements(driver,this);

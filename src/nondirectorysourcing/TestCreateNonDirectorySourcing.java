@@ -15,6 +15,7 @@ import org.testng.annotations.*;
 import login.PageLogin;
 import utils.BaseTools;
 import utils.PageShortcutMenu;
+import utils.PageSubmitSuccess;
 
 import org.testng.Assert;
 
@@ -93,7 +94,11 @@ public class TestCreateNonDirectorySourcing {
 		PageSourcing3 sourcingPage3 = PageFactory.initElements(driver, PageSourcing3.class);
 		sourcingPage3.SourcingPage(driver);
 		sourcingPage3.clickCommitButton();
-		ApplyCode = sourcingPage3.getApplyCode();
+		
+		PageSubmitSuccess submitSuccess = PageFactory.initElements(driver, PageSubmitSuccess.class);
+		submitSuccess.PageSubmitSuccess(driver);
+		ApplyCode = submitSuccess.getApplyCode();
+		
 		System.out.println("ApplyCode:"+ApplyCode);
 		System.out.println("采购申请" + ApplyCode + "提交成功。");
 	}

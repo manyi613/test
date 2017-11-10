@@ -6,7 +6,6 @@ import java.util.Random;
 
 public class BaseTools{
 
-	public static String applyCodeXPATH = "//*[@id=\"loginform\"]/div[3]/div/div[2]/div/div/div/div/div/h5/a/strong";
 
 	public static String getDate() throws Exception {
 		

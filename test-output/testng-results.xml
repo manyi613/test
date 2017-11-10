@@ -1,29 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
+<testng-results skipped="0" failed="0" ignored="0" total="4" passed="4">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="49878" started-at="2017-11-08T09:42:59Z" finished-at="2017-11-08T09:43:49Z">
+  <suite name="Suite" duration-ms="72693" started-at="2017-11-10T09:20:19Z" finished-at="2017-11-10T09:21:32Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="49878" started-at="2017-11-08T09:42:59Z" finished-at="2017-11-08T09:43:49Z">
-      <class name="travel.TestTravelApply">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:travel.TestTravelApply@6cc4c815]" name="setUp" is-config="true" duration-ms="3004" started-at="2017-11-08T17:42:59Z" finished-at="2017-11-08T17:43:02Z">
+    <test name="Test" duration-ms="72693" started-at="2017-11-10T09:20:19Z" finished-at="2017-11-10T09:21:32Z">
+      <class name="nondirectorysourcing.TestApprovingSourcingApply">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:nondirectorysourcing.TestApprovingSourcingApply@100fc185]" name="setUp" is-config="true" duration-ms="3104" started-at="2017-11-10T17:20:19Z" finished-at="2017-11-10T17:20:22Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="TestLogin()[pri:0, instance:travel.TestTravelApply@6cc4c815]" name="TestLogin" duration-ms="17235" started-at="2017-11-08T17:43:02Z" finished-at="2017-11-08T17:43:19Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:nondirectorysourcing.TestCreateNonDirectorySourcing@3a82f6ef]" name="setUp" is-config="true" duration-ms="2285" started-at="2017-11-10T17:20:22Z" finished-at="2017-11-10T17:20:25Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="TestLogin()[pri:0, instance:nondirectorysourcing.TestApprovingSourcingApply@100fc185]" name="TestLogin" duration-ms="7616" started-at="2017-11-10T17:21:06Z" finished-at="2017-11-10T17:21:14Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TestLogin -->
-        <test-method status="PASS" signature="TestTravelApply()[pri:1, instance:travel.TestTravelApply@6cc4c815]" name="TestTravelApply" duration-ms="29608" started-at="2017-11-08T17:43:19Z" finished-at="2017-11-08T17:43:49Z">
+        <test-method status="PASS" signature="TestApprovingSourcingApply()[pri:1, instance:nondirectorysourcing.TestApprovingSourcingApply@100fc185]" name="TestApprovingSourcingApply" duration-ms="16427" started-at="2017-11-10T17:21:14Z" finished-at="2017-11-10T17:21:30Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- TestTravelApply -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:travel.TestTravelApply@6cc4c815]" name="tearDown" is-config="true" duration-ms="0" started-at="2017-11-08T17:43:49Z" finished-at="2017-11-08T17:43:49Z">
+        </test-method> <!-- TestApprovingSourcingApply -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:nondirectorysourcing.TestApprovingSourcingApply@100fc185]" name="tearDown" is-config="true" duration-ms="1028" started-at="2017-11-10T17:21:30Z" finished-at="2017-11-10T17:21:31Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- travel.TestTravelApply -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:nondirectorysourcing.TestCreateNonDirectorySourcing@3a82f6ef]" name="tearDown" is-config="true" duration-ms="844" started-at="2017-11-10T17:21:31Z" finished-at="2017-11-10T17:21:32Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- nondirectorysourcing.TestApprovingSourcingApply -->
+      <class name="nondirectorysourcing.TestCreateNonDirectorySourcing">
+        <test-method status="PASS" signature="TestLogin()[pri:0, instance:nondirectorysourcing.TestCreateNonDirectorySourcing@3a82f6ef]" name="TestLogin" duration-ms="8094" started-at="2017-11-10T17:20:25Z" finished-at="2017-11-10T17:20:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TestLogin -->
+        <test-method status="PASS" signature="TestNewSourcingApply()[pri:0, instance:nondirectorysourcing.TestCreateNonDirectorySourcing@3a82f6ef]" name="TestNewSourcingApply" duration-ms="33272" started-at="2017-11-10T17:20:33Z" finished-at="2017-11-10T17:21:06Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TestNewSourcingApply -->
+      </class> <!-- nondirectorysourcing.TestCreateNonDirectorySourcing -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
 </testng-results>
